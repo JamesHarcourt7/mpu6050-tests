@@ -13,7 +13,7 @@ void setup() {
 void loop() {
   mpu.update();
   float angle = mpu.getAngleZ();
-  float accel[2] = {mpu.getAccX(), mpu.getAccZ()};
+  float accel[2] = {mpu.getAccX(), mpu.getAccY()};
   String output = "";
   output.concat(angle);
   output.concat(" ");
@@ -21,5 +21,5 @@ void loop() {
   output.concat(" ");
   output.concat(accel[1]);
   Serial.println(output);
-  delay(100);
+  delay(50);
 }

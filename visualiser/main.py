@@ -9,12 +9,12 @@ class Demo:
         pygame.init()
 
         # Agent data
-        self.width = 40
-        self.height = 60
+        self.width = 80
+        self.height = 120
         self.angle = 0
         self.a = pygame.Vector2()
         self.v = pygame.Vector2()
-        self.position = pygame.Vector2((380, 270))
+        self.position = pygame.Vector2((360, 240))
 
         # Initialise screen and main loop
         self.screen = pygame.display.set_mode((800, 600))
@@ -45,8 +45,8 @@ class Demo:
         self.a = acceleration
         self.angle = angle
 
-        self.v += self.a * 0.1
-        self.position += self.v * 0.1
+        self.v += self.a * 0.05
+        self.position += self.v * 0.05
 
     def draw(self):
         rotated = pygame.transform.rotate(self.image, self.angle)
@@ -60,9 +60,8 @@ class Demo:
             data = data.rstrip().split(" ")
             if len(data) == 3:
                 angle = float(data[0])
-                acceleration = pygame.Vector2(0, 0)
-                print(angle)
-                print(acceleration)
+                acceleration = pygame.Vector2(float(data[1]), float(data[2]))
+                acceleration *= 10
                 self.update(angle, acceleration)
 
 
