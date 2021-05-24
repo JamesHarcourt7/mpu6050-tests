@@ -12,15 +12,14 @@ void setup() {
 
 void loop() {
   mpu.update();
-  float angle[3] = {mpu.getAngleX(), mpu.getAngleY(), mpu.getAngleZ()};
+  float angle = mpu.getAngleZ();
+  float accel[2] = {mpu.getAccX(), mpu.getAccZ()};
   String output = "";
-  output.concat("{");
-  output.concat(angle[0]);
-  output.concat(", ");
-  output.concat(angle[1]);
-  output.concat(", ");
-  output.concat(angle[2]);
-  output.concat("}");
+  output.concat(angle);
+  output.concat(" ");
+  output.concat(accel[0]);
+  output.concat(" ");
+  output.concat(accel[1]);
   Serial.println(output);
   delay(100);
 }
